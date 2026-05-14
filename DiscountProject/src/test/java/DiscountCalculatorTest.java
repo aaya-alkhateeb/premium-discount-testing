@@ -5,7 +5,6 @@ public class DiscountCalculatorTest {
 
     @Test
     void testDiscountCalculation() {
-        // الحالات الصالحة (Valid Cases) بناءً على التقرير
         // TC1: NEW, 0 orders, No Newsletter -> 5% discount [cite: 23]
         assertEquals(5, DiscountCalculator.calculateDiscount("NEW", 0, false));
 
@@ -24,13 +23,10 @@ public class DiscountCalculatorTest {
 
     @Test
     void testInvalidAndInfeasibleCases() {
-        // الحالات التي ترفع IllegalArgumentException [cite: 4, 37]
         
-        // TC2: NEW customer with 10 orders is Infeasible [cite: 31, 64]
         assertThrows(IllegalArgumentException.class, () -> 
             DiscountCalculator.calculateDiscount("NEW", 10, true));
 
-        // TC3, TC6, TC9: Negative orders 
         assertThrows(IllegalArgumentException.class, () -> 
             DiscountCalculator.calculateDiscount("NEW", -1, false));
 
